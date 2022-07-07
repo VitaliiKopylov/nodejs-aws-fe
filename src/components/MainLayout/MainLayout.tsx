@@ -1,19 +1,19 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import Header from "components/MainLayout/components/Header";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         My Store
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -26,26 +26,36 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  appWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+  },
 }));
 
-const MainLayout: React.FC = ({children}) => {
+const MainLayout: React.FC = ({ children }) => {
   const classes = useStyles();
 
   return (
-    <>
-      <Header/>
-      <main>
+    <div className={classes.appWrapper}>
+      <Header />
+      <main style={{ flexGrow: 1 }}>
         <Container className={classes.container} maxWidth="md">
           {children!}
         </Container>
       </main>
       <footer className={classes.footer}>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography
+          variant="subtitle1"
+          align="center"
+          color="textSecondary"
+          component="p"
+        >
           Thank you for your purchase!
         </Typography>
-        <Copyright/>
+        <Copyright />
       </footer>
-    </>
+    </div>
   );
 };
 
