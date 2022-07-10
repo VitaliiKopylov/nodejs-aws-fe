@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
+    padding: theme.spacing(2),
   },
   appWrapper: {
     display: "flex",
@@ -39,7 +39,7 @@ const MainLayout: React.FC = ({ children }) => {
   return (
     <div className={classes.appWrapper}>
       <Header />
-      <main style={{ flexGrow: 1 }}>
+      <main style={{ flexGrow: 1, paddingTop: '40px' }}>
         <Container className={classes.container} maxWidth="md">
           {children!}
         </Container>
