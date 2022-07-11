@@ -7,13 +7,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:deploy": "npm run build && npm run despoy:s3",
-    "despoy:s3": "serverless client deploy --no-config-change --no-policy-change --no-cors-change",
+    "build:deploy": "npm run build && npm run deploy:s3",
+    "deploy:s3": "serverless client deploy --no-config-change --no-policy-change --no-cors-change",
     "cloudfront:setup": "sls deploy --region eu-west-1",
-    "cloudfront:domainInfo": "sls domainInfo",
-    "cloudfront:invalidateCache": "sls invalidateCloudFrontCache",
-    "cloudfront:build:deploy": "npm run build:deploy && npm run cloudfront:invalidateCache",
-    "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy"
+    "cloudfront:domainInfo": "sls domainInfo --region eu-west-1",
+    "cloudfront:invalidateCache": "sls invalidateCloudFrontCache --region eu-west-1",
+    "cloudfront:build:deploy": "npm run build:deploy && npm run cloudfront:invalidateCache --region eu-west-1",
+    "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy --region eu-west-1"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
