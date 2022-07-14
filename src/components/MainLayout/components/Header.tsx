@@ -1,14 +1,15 @@
-import React from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import React from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import { Box } from "@material-ui/core";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 import Cart from "components/MainLayout/components/Cart";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,10 +23,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     homeLink: {
-      color: 'white',
-      textDecoration: 'none'
-    }
-  }),
+      color: "white",
+      textDecoration: "none",
+    },
+  })
 );
 
 export default function Header() {
@@ -43,45 +44,62 @@ export default function Header() {
   };
 
   return (
-    <AppBar position="relative">
-      <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          <Link className={classes.homeLink} to="/">My Store!</Link>
-        </Typography>
+    <AppBar position="relative" color="secondary" elevation={4}>
+      <Box sx={{ py: 1 }}>
+        <Toolbar>
+          <Typography variant="h5" className={classes.title}>
+            <Link className={classes.homeLink} to="/">
+              TOYS SHOP
+            </Link>
+          </Typography>
 
-        {auth && (
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircle/>
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem component={Link} to="/admin/orders" onClick={handleClose}>Manage orders</MenuItem>
-              <MenuItem component={Link} to="/admin/products" onClick={handleClose}>Manage products</MenuItem>
-            </Menu>
-          </div>
-        )}
-        <Cart/>
-      </Toolbar>
+          {auth && (
+            <div>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+                size="medium"
+              >
+                <AccountCircle fontSize="inherit" />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+                onClose={handleClose}
+              >
+                <MenuItem
+                  component={Link}
+                  to="/admin/orders"
+                  onClick={handleClose}
+                >
+                  Manage orders
+                </MenuItem>
+                <MenuItem
+                  component={Link}
+                  to="/admin/products"
+                  onClick={handleClose}
+                >
+                  Manage products
+                </MenuItem>
+              </Menu>
+            </div>
+          )}
+          <Cart />
+        </Toolbar>
+      </Box>
     </AppBar>
   );
 }
