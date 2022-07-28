@@ -1,6 +1,7 @@
 import React from 'react';
 import 'components/App/App.css';
 import PageProducts from "components/pages/PageProducts/PageProducts";
+import PageProduct from 'components/pages/PageProduct/PageProduct';
 import MainLayout from "components/MainLayout/MainLayout";
 import {
   BrowserRouter as Router,
@@ -22,6 +23,9 @@ function App() {
           <MainLayout>
             <Route exact path="/">
               <PageProducts/>
+            </Route>
+            <Route exact path="/products/:id">
+              <PageProduct />
             </Route>
             <Route exact path={["/admin/product-form/:id", '/admin/product-form']}>
               <PageProductForm/>
