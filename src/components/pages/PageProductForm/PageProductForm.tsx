@@ -108,7 +108,7 @@ export default function PageProductForm() {
       ? { ...ProductSchema.cast(formattedValues), id }
       : formattedValues;
     axios
-      .put(`${API_PATHS.bff}/product`, productToSave)
+      .post(`${API_PATHS.bff}/products`, productToSave)
       .then(() => history.push("/admin/products"));
   };
 
@@ -117,7 +117,7 @@ export default function PageProductForm() {
       setIsLoading(false);
       return;
     }
-    axios.get(`${API_PATHS.bff}/product/${id}`).then((res) => {
+    axios.get(`${API_PATHS.bff}/products/${id}`).then((res) => {
       setProduct(res.data);
       setIsLoading(false);
     });
