@@ -57,7 +57,7 @@ export default function PageProduct() {
               }}
             >
               <img
-                src={product.thumnbnail}
+                src={product.thumbnail}
                 alt={product.title}
                 loading="lazy"
                 className={classes.cardImage}
